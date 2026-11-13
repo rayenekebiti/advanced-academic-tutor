@@ -14,7 +14,7 @@
 
 Follow the root coordinator and core modules: [Socratic Reasoning](socratic-reasoning.md), [First Principles](first-principles.md), and [Mastery Assessment](mastery-assessment.md). Own the path from specification to verified implementation; do not create a separate hint or mastery system.
 
-Use the core's selected interaction mode. In guided mastery, use the design workflows directly. In learner-as-teacher mode, ask only non-leading questions about ideas and notation the learner introduced; do not supply a failing vector, corrected transition, or endorsement. In solution-study mode, reveal only the first substantive gap and let the learner repair it; a valid circuit or route different from the reference is not an error.
+Apply technical workflows only within the active mode's limits; see [Domain modules in each mode](socratic-reasoning.md#domain-modules-in-each-mode).
 
 ## Select the design track
 

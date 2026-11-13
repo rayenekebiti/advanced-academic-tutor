@@ -1,0 +1,143 @@
+{
+  "skill_name": "advanced-academic-tutor",
+  "evals": [
+    {
+      "id": 1,
+      "name": "one-off-question-no-tutoring",
+      "prompt": "What is a Karnaugh map?",
+      "expected_output": "A normal concise explanation of Karnaugh maps. No diagnostic questions, no skill map, no tutoring loop.",
+      "files": [],
+      "expectations": [
+        "Answers the question directly in the first reply",
+        "Does not ask diagnostic questions or start a course",
+        "Does not render a skill map"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "guided-mastery-diagnostic-start",
+      "prompt": "Teach me loop invariants until I can prove them on my own.",
+      "expected_output": "Breaks the topic into subskills, says a few questions will set the starting point, and asks exactly one diagnostic question, ending the message there.",
+      "files": [],
+      "expectations": [
+        "Asks exactly one main question",
+        "The message ends with that question, with no hint or example answer after it",
+        "Does not teach the content before the diagnostic"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "learner-as-teacher-no-correction",
+      "prompt": "Act as a curious novice. I'll teach you Big-O. [Learner:] Big-O tells you the exact number of steps an algorithm takes, so O(n) means exactly n steps.",
+      "expected_output": "One short, non-leading novice question using only the learner's ideas. No correction, no hint that the claim is wrong, no endorsement.",
+      "files": [],
+      "expectations": [
+        "Asks exactly one short question",
+        "Does not correct the claim or say it is wrong",
+        "Does not endorse the claim as correct",
+        "Introduces no new facts, definitions, or notation"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "learner-as-teacher-recap",
+      "prompt": "[Earlier in a learner-as-teacher session the learner said: 'A Moore machine's output depends only on its state' and 'A Mealy machine reacts one clock earlier.' The tutor asked what 'one clock earlier' means and the learner did not answer.] Learner: OK, I'm done teaching.",
+      "expected_output": "No further question. A 'What you taught me' list restating the learner's two claims without judgment, and a 'Questions still open' list with the unanswered question.",
+      "files": [],
+      "expectations": [
+        "Asks no question",
+        "Restates both learner claims without correcting or endorsing them",
+        "Lists the unanswered 'one clock earlier' question as open",
+        "Adds no new facts, correctness judgment, or mastery level"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "solution-study-requires-attempt",
+      "prompt": "Here's the released solution to problem 3 (prove that the sum of the first n odd numbers is n^2, by induction). Just walk me through it, I haven't tried it.",
+      "expected_output": "Declines to walk through the reference without an attempt and offers guided mastery to help the learner make one, then stops.",
+      "files": [],
+      "expectations": [
+        "Does not walk through or paraphrase the reference solution",
+        "Offers guided help to make an attempt",
+        "Ends after the offer"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "solution-study-different-valid-route",
+      "prompt": "Compare my attempt with the released solution. Problem: show 1+3+...+(2n-1) = n^2. Reference: induction on n. My attempt: I paired the k-th term with the (n+1-k)-th term; each pair sums to 2n, there are n/2 pairs, so the sum is n^2. I only handled even n.",
+      "expected_output": "States what is correct (the pairing argument is valid for even n), does not call the different method an error, and names only the first substantive gap: odd n is not covered. Hands the repair back with one question.",
+      "files": [],
+      "expectations": [
+        "Accepts the pairing method as a valid route",
+        "Identifies the odd-n case as the first gap",
+        "Does not present the induction proof",
+        "Ends with one question or one small hint"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "just-tell-me-scope",
+      "prompt": "[Guided mastery on the Gaussian integral. The tutor asked: 'After switching to polar coordinates, what are the limits for r and theta?' The learner tried twice and was wrong.] Learner: just tell me.",
+      "expected_output": "Gives the answer to the current question with reasons (r from 0 to infinity, theta from 0 to 2*pi), then resumes with one new Socratic question. Does not dump the rest of the derivation.",
+      "files": [],
+      "expectations": [
+        "Gives the limits for r and theta with a reason",
+        "Does not complete the rest of the derivation",
+        "Ends with one new question"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "no-premature-promotion",
+      "prompt": "[Guided mastery on K-maps. Current skill map shows 'grouping with wraparound 2/5'. The learner just gave one correct grouping with a brief correct reason.] Learner: Done, so I've mastered that one, right?",
+      "expected_output": "Acknowledges the specific correct work but does not raise the subskill to level 4 on one check. Explains that another independent check is needed and asks one question that tests it.",
+      "files": [],
+      "expectations": [
+        "Does not claim level 4 or mastery",
+        "States that more independent evidence is needed",
+        "Asks one new question that tests the subskill"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "beginner-faded-worked-example",
+      "prompt": "[Guided mastery on recurrence relations. The learner answered the first two diagnostic questions with 'no idea, I've never seen these'.] Learner: Sorry, I really don't know any of this.",
+      "expected_output": "Stops diagnosing and starts the faded worked-example path: one short fully worked example with named reasons, ending with one question about why a step was needed.",
+      "files": [],
+      "expectations": [
+        "Does not ask more diagnostic questions",
+        "Gives one fully worked example with a reason for each step",
+        "Ends with one question about a step in the example",
+        "Does not flatter or reassure about ability"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "exam-mode",
+      "prompt": "[Guided mastery on digital logic, skill map in progress.] Learner: exam mode, my final is tomorrow morning.",
+      "expected_output": "Asks one question about the exam scope (and deadline if unclear) before reprioritizing. Does not drop the one-question rule or the evidence rules.",
+      "files": [],
+      "expectations": [
+        "Asks exactly one question about scope or deadline",
+        "Does not dump a full summary of the course",
+        "Does not claim mastery or change levels"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "save-state-format",
+      "prompt": "[Guided mastery on sliding-window algorithms. Skill map: window invariant=3, left-pointer update=2, complexity=1. The learner needed an H2 hint on the left-pointer update. Misconception: thought left can move backward.] Learner: save state",
+      "expected_output": "Emits a TUTOR STATE ... END TUTOR STATE block in the documented format, filled only with known information.",
+      "files": [],
+      "expectations": [
+        "Output starts with 'TUTOR STATE' and ends with 'END TUTOR STATE'",
+        "Includes the three subskills with their levels",
+        "Records the H2 hint and the left-pointer misconception",
+        "Uses the default 4/5 target or marks the target as not set",
+        "Does not invent covered topics, hints, or misconceptions that were not given"
+      ]
+    }
+  ]
+}

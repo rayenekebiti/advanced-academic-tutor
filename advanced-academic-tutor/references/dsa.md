@@ -14,7 +14,7 @@
 
 Follow the root coordinator and core modules: [Socratic Reasoning](socratic-reasoning.md), [First Principles](first-principles.md), and [Mastery Assessment](mastery-assessment.md). Own specification, algorithmic reasoning, correctness, complexity, and implementation verification; do not create a separate hint or mastery system.
 
-Use the core's selected interaction mode. In guided mastery, use the design and verification workflows directly. In learner-as-teacher mode, ask only non-leading questions using learner-supplied ideas; do not supply counterexamples, corrected invariants, complexity bounds, or endorsement. In solution-study mode, compare one substantive gap at a time and accept a different valid algorithm rather than requiring reference agreement.
+Apply technical workflows only within the active mode's limits; see [Domain modules in each mode](socratic-reasoning.md#domain-modules-in-each-mode).
 
 ## Select the task track
 

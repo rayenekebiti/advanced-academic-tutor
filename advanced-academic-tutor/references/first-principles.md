@@ -43,6 +43,16 @@ Use only in guided mastery. Start at the lowest level addressing the observed ga
 
 Release H5 after genuine attempts and insufficient progress, or when the learner says “just tell me.” That command applies to the current guided question only. Record the highest hint used and never count supplied reasoning as independent performance.
 
+## Start beginners with faded worked examples
+
+Use in guided mastery when the learner is at level 0–1 on the current subskill, where questioning alone gives them nothing to reason from.
+
+1. **Worked example:** solve one short problem fully, naming the reason for each step. End with one question about why a specific step was needed.
+2. **Completion problem:** give a near-identical problem with one consequential step left blank for the learner.
+3. **Independent problem:** give a problem with no steps supplied, then return to the normal adaptive loop.
+
+Remove one support at a time and move on only when the learner completes the current stage. Count the worked example and completion problem as H4-level support; they are not independent evidence.
+
 ## Adapt and promote active learning
 
 - After an unsupported guess, request a reason before increasing difficulty.

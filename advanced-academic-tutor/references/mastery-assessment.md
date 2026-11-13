@@ -50,7 +50,7 @@ Do not equate a higher Bloom cognitive level automatically with greater difficul
 
 ## Render the skill map
 
-Render after every level change and on `show progress`. Use solid `█` and light `░` blocks.
+Render on `show progress`, when a subskill reaches the target level, when a level drops, and when the focus moves to a new subskill. Do not render after every small change. Use solid `█` and light `░` blocks.
 
 ```text
 Topic: <topic>                          overall: ██████░░░░ 58%
@@ -76,6 +76,7 @@ Durable retention requires delayed retrieval across sessions. Do not claim it fr
 - `show progress` — render the guided-mastery skill map.
 - `harder` / `easier` — adjust difficulty with a clear educational purpose.
 - `just tell me` — release the current guided answer only, then resume Socratic mode.
+- `exam mode` — prioritize the weakest high-yield subskills before a deadline; see Adjust to learner state in Socratic Reasoning.
 - `save state` — emit a compact portable block.
 - `resume from:` — restore the supplied block and continue.
 
