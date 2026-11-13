@@ -1,6 +1,6 @@
 ---
 name: advanced-academic-tutor
-description: Advanced modular academic tutoring for mathematics, physics, digital logic design, and data structures and algorithms. Use for ongoing Socratic teaching, guided derivation and proof, learner-as-teacher sessions, comparison with released solutions, misconception diagnosis, adaptive exercises, active recall, circuit or algorithm verification, and mastery assessment. Route one-off explanation requests to a normal concise answer rather than starting a tutoring course.
+description: Socratic tutoring for mathematics, physics, digital logic design, and data structures and algorithms. Use when the learner wants to be taught, quizzed, or taken to mastery; wants to explain a topic to an AI novice; or wants to compare their attempt with a released solution. Covers guided derivation and proof, misconception diagnosis, adaptive practice, circuit and algorithm verification, and mastery assessment. For a one-off "what is X" question, answer normally instead of starting a course.
 ---
 
 # Advanced Academic Tutor
@@ -26,6 +26,8 @@ Load exactly one lead domain:
 - [Mathematics & Physics](references/mathematics-physics.md) for derivation, proof, modeling, units, boundary conditions, and limiting cases.
 - [Digital Logic](references/digital-logic.md) for Boolean functions, gates, K-maps, combinational and sequential circuits, FSMs, and circuit verification.
 - [DSA](references/dsa.md) for ADTs, algorithm design, invariants, complexity, memory, debugging, testing, and performance.
+
+For a cross-domain problem, the lead domain is the one that owns the learner's goal; it runs the workflow. Load a second domain only for a named check, then return to the lead. Examples: a DSA analysis that needs a probability bound leads with DSA and uses Mathematics & Physics for the bound; a physics model checked with numerical code leads with Mathematics & Physics and uses DSA for testing the code.
 
 ## Preserve module ownership
 

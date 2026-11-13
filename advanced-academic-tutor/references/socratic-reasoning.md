@@ -4,9 +4,11 @@
 
 - [Guard against unwanted tutoring](#guard-against-unwanted-tutoring)
 - [Mode A: Guided mastery](#mode-a-guided-mastery)
+- [Adjust to learner state](#adjust-to-learner-state)
 - [Mode B: Learner-as-teacher](#mode-b-learner-as-teacher)
 - [Mode C: Solution study](#mode-c-solution-study)
 - [Resolve mode conflicts](#resolve-mode-conflicts)
+- [Domain modules in each mode](#domain-modules-in-each-mode)
 
 Teach primarily through questions that make the learner reason, predict, explain, justify, and repair. Select exactly one mode per session segment.
 
@@ -22,7 +24,7 @@ Use when the learner asks to be taught, quizzed, drilled, or taken to mastery.
 
 1. Break the topic into 4–10 concrete subskills, fewer for narrow topics. For broad topics, use a two-level tree and select the first branch.
 2. Explain that a few one-at-a-time questions will establish the starting point.
-3. Ask 3–5 diagnostic questions spanning easy to hard. Do not teach until the diagnostic is complete.
+3. Ask 3–5 diagnostic questions spanning easy to hard. Do not teach until the diagnostic is complete. If the first two answers show no recognition of the topic (level 0), stop diagnosing and start with the faded worked-example path in First Principles.
 4. Show the initial skill map from Mastery Assessment and propose where to start; let the learner override.
 
 ### Run the adaptive loop
@@ -43,6 +45,16 @@ When the learner is wrong, do not immediately give the answer. Narrow the questi
 When the learner is right, occasionally play devil's advocate with a relevant adversarial case. Require the learner to defend the answer rather than relying on confidence or recognition.
 
 Use practical exercises and inspect actual output when tools are relevant. Do not flatter. A vague or partially correct answer is not correct; probe until the understanding is clear.
+
+## Adjust to learner state
+
+Applies to guided mastery only. Adjust the pace, not the evidence rules: promotion criteria and hint logging stay the same.
+
+- **Frustration or repeated failure:** state plainly that the step is hard, without praise or reassurance about ability. Make the next question smaller, or step back to a prerequisite. Mention that `just tell me` is available.
+- **Time pressure (`exam mode`):** ask for the deadline and scope in one question. Then prioritize the weakest high-yield subskills, skip unannounced review of strong subskills, and explain directly after one failed attempt instead of 2–3. Keep one question per turn and record every hint used.
+- **Fatigue or end of session:** offer `save state` and stop rather than starting a new subskill.
+
+Leave `exam mode` when the learner says so or the stated deadline passes.
 
 ## Mode B: Learner-as-teacher
 
@@ -109,3 +121,13 @@ Record what the learner did independently, what needed a hint, what the referenc
 - Never combine guided teaching, novice behavior, and solution comparison in one turn.
 - Switch modes only when the learner's goal changes or the current workflow is complete.
 - Domain modules may select what deserves examination but may not bypass these boundaries.
+
+## Domain modules in each mode
+
+Every domain module follows this table instead of restating it.
+
+| Mode | Domain module may | Domain module may not |
+|---|---|---|
+| A: Guided mastery | Run its workflows directly: derivation ledger, proof protocol, modeling chain, design and verification tracks | Override the one-question rule or the hint levels in First Principles |
+| B: Learner-as-teacher | Help choose which gap in the learner's own explanation to ask about | Supply facts, corrections, examples, counterexamples, failing vectors, corrected transitions or invariants, complexity bounds, or endorsement |
+| C: Solution study | Check the first substantive gap and accept a different valid route (derivation, circuit, or algorithm) | Require agreement with the reference or repair more than the current gap |

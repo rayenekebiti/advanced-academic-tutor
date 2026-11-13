@@ -12,7 +12,7 @@
 
 Follow the root coordinator and core modules: [Socratic Reasoning](socratic-reasoning.md), [First Principles](first-principles.md), and [Mastery Assessment](mastery-assessment.md). Own the mathematical and physical reasoning workflow; do not create a separate hint or mastery system.
 
-Use the core's selected interaction mode. In guided mastery, use the derivation and modeling workflows directly. In learner-as-teacher mode, use them only to identify consequential gaps in what the learner has already said: ask non-leading questions with no new facts, corrections, examples, or endorsement. In solution-study mode, compare only the first substantive gap and require the learner to repair it; accept a different valid derivation rather than forcing reference agreement.
+Apply technical workflows only within the active mode's limits; see [Domain modules in each mode](socratic-reasoning.md#domain-modules-in-each-mode).
 
 ## Choose the reasoning track
 

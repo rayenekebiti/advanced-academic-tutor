@@ -11,6 +11,8 @@ A modular agent skill for rigorous, interactive tutoring in mathematics, physics
 | Solution study | “Compare my attempt with the released solution” | Attempt-first comparison, one substantive gap at a time, learner-led repair, and a withheld transfer variation |
 | One-off answer | “What is X?” without a tutoring request | A normal concise answer without starting a tutoring course |
 
+Guided mastery also adapts to the learner: complete beginners start with faded worked examples, and frustration, time pressure (`exam mode`), and fatigue change the pace without loosening the evidence rules.
+
 ## Domain coverage
 
 - **Mathematics and physics:** derivation ledgers, proof construction, assumptions, quantifiers, modeling, system boundaries, dimensional analysis, initial and boundary conditions, and limiting cases.
@@ -22,6 +24,10 @@ A modular agent skill for rigorous, interactive tutoring in mathematics, physics
 ```text
 .
 ├── README.md
+├── CHANGELOG.md
+├── LICENSE
+├── evals/
+│   └── evals.json
 └── advanced-academic-tutor/
     ├── SKILL.md
     └── references/
@@ -37,7 +43,13 @@ The root `SKILL.md` coordinates module selection. Reference modules load only wh
 
 ## Installation
 
-Copy the complete `advanced-academic-tutor/` directory into your agent's skills directory. Keep its internal folder structure intact so that `advanced-academic-tutor/SKILL.md` can resolve the files under `references/`.
+Copy the inner `advanced-academic-tutor/` directory (the one that contains `SKILL.md`) into your agent's skills directory. For Claude Code:
+
+```bash
+cp -r advanced-academic-tutor ~/.claude/skills/
+```
+
+Keep its internal folder structure intact so that `SKILL.md` can resolve the files under `references/`. The `evals/` folder is for testing and does not need to be installed.
 
 No Python packages, external services, API keys, or runtime scripts are required by the tutoring skill itself.
 
@@ -55,6 +67,7 @@ Guided mastery supports:
 - `show progress` — display the current skill map.
 - `harder` / `easier` — adjust difficulty with an educational purpose.
 - `just tell me` — reveal the current guided answer, then resume Socratic interaction.
+- `exam mode` — focus on the weakest high-yield subskills before a deadline, with faster direct explanations.
 - `save state` — emit a portable tutoring-state block.
 - `resume from:` — restore a supplied state block and continue.
 
@@ -70,6 +83,32 @@ Progress remains in the conversation by default. The skill does not write learne
 - Treat tests, simulations, and correct final answers as evidence with explicit limits—not substitutes for reasoning.
 - Never infer durable retention from a single immediate session.
 
+## Evaluation
+
+`evals/evals.json` contains 11 behavioral test cases. Each has a prompt (multi-turn cases include the earlier context in brackets), the expected behavior, and checkable expectations. They cover:
+
+- one-off questions that should not start tutoring;
+- the one-question-per-turn rule in guided mastery;
+- no corrections, facts, or endorsement in learner-as-teacher mode, including the end-of-session recap;
+- solution study: requiring an attempt, and accepting a different valid route;
+- the scope of `just tell me`, `exam mode`, and `save state`;
+- refusing to promote a level on a single check;
+- the faded worked-example path for beginners.
+
+Run them with the `skill-creator` skill's eval workflow, comparing runs with and without the skill installed.
+
+## What's new in 1.1.0
+
+- **Behavioral evals:** 11 test cases, described above.
+- **Beginner path:** learners at level 0–1 get a worked example, then a problem with one step missing, then an independent problem, before regular Socratic questioning.
+- **Learner-state adaptation:** guidance for frustration, time pressure (`exam mode`), and fatigue that changes the pace but not the evidence rules.
+- **Less duplication:** one shared table defines what domain modules may do in each mode, replacing a repeated paragraph in each domain file.
+- **Clearer cross-domain rule:** the lead domain owns the workflow, and a second domain is loaded only for a named check.
+- **Quieter skill map:** shown at milestones and on `show progress`, not after every change.
+- **Packaging:** MIT license, changelog, and an install command.
+
+See [CHANGELOG.md](CHANGELOG.md) for details.
+
 ## Validation and limitations
 
 The packaged skill passed structural validation, archive integrity checks, and internal-link verification. Its workflows are specification-level teaching designs, not results from live learner studies. Optional tools such as a CAS, HDL simulator, formal prover, or profiler can strengthen verification but do not replace the relevant reasoning process.
@@ -83,3 +122,7 @@ The interaction boundaries draw on these user-designated primary skills:
 - [`ai-solution-study`](https://github.com/bstellato/ai-teaching-skills/blob/main/ai-solution-study/SKILL.md)
 
 This repository is a separate modular architecture and does not modify those projects.
+
+## License
+
+[MIT](LICENSE)
