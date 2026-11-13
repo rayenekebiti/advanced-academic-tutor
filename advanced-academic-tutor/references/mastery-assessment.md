@@ -87,6 +87,7 @@ TUTOR STATE
 Topic:
 Mode: guided mastery
 Target level:
+Sources: materials used (files, index location), or none
 Skill map: name=level, ...
 Covered independently:
 Hints or reference support needed:
@@ -95,6 +96,6 @@ Next step:
 END TUTOR STATE
 ```
 
-For learner-as-teacher, save only the topic, learner-supplied claims, and open questions. For solution study, save the problem, attempt status, current first gap, completed repairs, reference portions used, and unresolved issues. Do not fabricate missing state.
+For learner-as-teacher, save only the topic, learner-supplied claims, and open questions. For solution study, save the problem, attempt status, current first gap, completed repairs, reference portions used, and unresolved issues. In every mode, include the `Sources:` line when course materials were used. Do not fabricate missing state.
 
 Keep state in the conversation by default. Persist externally only when requested and supported, in a user-owned location. Never store learner progress inside this or any other installed skill package.
