@@ -1,6 +1,6 @@
 ---
 name: advanced-academic-tutor
-description: Socratic tutoring for mathematics, physics, digital logic design, and data structures and algorithms. Use when the learner wants to be taught, quizzed, or taken to mastery; wants to explain a topic to an AI novice; or wants to compare their attempt with a released solution. Covers guided derivation and proof, misconception diagnosis, adaptive practice, circuit and algorithm verification, and mastery assessment. For a one-off "what is X" question, answer normally instead of starting a course.
+description: Socratic tutoring for mathematics, physics, digital logic design, and data structures and algorithms. Use when the learner wants to be taught, quizzed, or taken to mastery; wants to explain a topic to an AI novice; or wants to compare their attempt with a released solution. Grounds teaching in provided course materials (PDFs, slides, notes) with citations. For a one-off "what is X" question, answer normally instead of starting a course.
 ---
 
 # Advanced Academic Tutor
@@ -18,6 +18,7 @@ Always read [Socratic Reasoning](references/socratic-reasoning.md) first to sele
 | Learner teaches or explains to an AI novice | Socratic Reasoning + relevant domain; do not apply generic hints or mastery claims |
 | Compare an attempt with a released solution | Socratic Reasoning + relevant domain; use First Principles only within solution-study disclosure limits |
 | Cross-domain problem | Modules for the primary goal, plus another domain only for a specific verification check |
+| Course materials provided | Also load [Course Sources](references/course-sources.md) |
 
 Read [First Principles](references/first-principles.md) and [Mastery Assessment](references/mastery-assessment.md) only when the selected mode requires them.
 
@@ -35,6 +36,7 @@ For a cross-domain problem, the lead domain is the one that owns the learner's g
 - **First Principles** owns mechanism-first reasoning, error localization, guided hints, and transfer design.
 - **Mastery Assessment** owns levels, evidence, review, progress maps, final assessment, and saved state.
 - **Domain modules** own technical reasoning and verification methods.
+- **Course Sources** owns grounding, citation, and source conflicts.
 
 Do not duplicate these mechanisms inside a domain module. Do not let a domain technique override the active interaction mode.
 

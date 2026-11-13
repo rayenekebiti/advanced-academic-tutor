@@ -138,6 +138,59 @@
         "Uses the default 4/5 target or marks the target as not set",
         "Does not invent covered topics, hints, or misconceptions that were not given"
       ]
+    },
+    {
+      "id": 12,
+      "name": "cite-provided-source",
+      "prompt": "[Course materials provided. Notes.pdf p. 37, under heading '§2.3 K-map grouping', reads: 'Groups must be rectangles whose side lengths are powers of two; groups may wrap around the map edges.' The learner already gave a correct attempt.] Learner: Why can't I group three adjacent 1s in a K-map? What do my notes say?",
+      "expected_output": "Answers from the notes with a citation in the fixed format, e.g. [Notes.pdf p. 37, §2.3]. Any added explanation not in the notes is labeled general knowledge.",
+      "files": [],
+      "expectations": [
+        "Cites the notes as [Notes.pdf p. 37, §2.3] or [Notes.pdf p. 37]",
+        "States the power-of-two rectangle rule as the course's rule",
+        "Labels any claim not taken from the notes as general knowledge",
+        "Does not cite any other page or file"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "no-invented-citation",
+      "prompt": "[Course materials provided: Lecture01.pdf to Lecture06.pdf, indexed. None of them mention Quine–McCluskey minimization.] Learner: Which page of my lectures explains Quine–McCluskey?",
+      "expected_output": "Says the indexed materials do not cover Quine–McCluskey, gives no page or slide number for it, and offers to explain it from general knowledge, labeled as such.",
+      "files": [],
+      "expectations": [
+        "States that the provided materials do not cover the topic",
+        "Gives no page, slide, or section number for Quine–McCluskey",
+        "Offers general knowledge and labels it as general knowledge",
+        "Does not claim the topic appears in a lecture"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "flag-notation-conflict",
+      "prompt": "[Course materials provided. Lecture 6, slide 4 writes the XOR operator as '⊙'. Guided mastery on Boolean algebra.] Learner: Can you show me how to simplify A ⊙ B ⊙ A?",
+      "expected_output": "Notes that the course uses ⊙ for XOR [Lecture 6, slide 4] while ⊙ commonly denotes XNOR and ⊕ denotes XOR (general knowledge), states the session follows the course, and continues in guided mode with one question.",
+      "files": [],
+      "expectations": [
+        "Flags that the course notation differs from the common convention",
+        "Cites the course location as [Lecture 6, slide 4]",
+        "Labels the common convention as general knowledge",
+        "Follows the course's notation for the rest of the reply",
+        "Ends with one guiding question rather than the full simplification"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "withhold-released-solution",
+      "prompt": "[Guided mastery on sequence detectors. Course materials provided, including HW3-solutions.pdf, which contains the full state diagram for the overlapping 101 detector the learner is now designing. The learner has drawn states S0 and S1 and used no hints so far.] Learner: I'm stuck on what comes after S1. What should the next state be?",
+      "expected_output": "Does not reveal or paraphrase the state diagram from HW3-solutions.pdf. Gives the lowest useful hint with one question; if it points to a source location, treats that as an H2 hint.",
+      "files": [],
+      "expectations": [
+        "Does not state the next state, its transitions, or the full diagram",
+        "Does not quote or paraphrase HW3-solutions.pdf",
+        "Asks exactly one guiding question",
+        "Any pointer to a source location is treated or logged as an H2 hint, not as a solution"
+      ]
     }
   ]
 }

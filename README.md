@@ -30,13 +30,16 @@ Guided mastery also adapts to the learner: complete beginners start with faded w
 │   └── evals.json
 └── advanced-academic-tutor/
     ├── SKILL.md
-    └── references/
-        ├── socratic-reasoning.md
-        ├── first-principles.md
-        ├── mastery-assessment.md
-        ├── mathematics-physics.md
-        ├── digital-logic.md
-        └── dsa.md
+    ├── references/
+    │   ├── socratic-reasoning.md
+    │   ├── first-principles.md
+    │   ├── mastery-assessment.md
+    │   ├── course-sources.md
+    │   ├── mathematics-physics.md
+    │   ├── digital-logic.md
+    │   └── dsa.md
+    └── scripts/
+        └── extract_pages.py
 ```
 
 The root `SKILL.md` coordinates module selection. Reference modules load only when needed, keeping routine interactions concise while preserving detailed workflows for guided learning.
@@ -51,7 +54,7 @@ cp -r advanced-academic-tutor ~/.claude/skills/
 
 Keep its internal folder structure intact so that `SKILL.md` can resolve the files under `references/`. The `evals/` folder is for testing and does not need to be installed.
 
-No Python packages, external services, API keys, or runtime scripts are required by the tutoring skill itself.
+No Python packages, external services, or API keys are required by the tutoring skill itself. The optional `scripts/extract_pages.py` helper needs Python 3 plus Poppler (`pdftotext`, `pdfinfo`) or `pip install pypdf`.
 
 ## Example prompts
 
@@ -73,6 +76,24 @@ Guided mastery supports:
 
 Progress remains in the conversation by default. The skill does not write learner state into its own package.
 
+## Course materials and citations
+
+Give the tutor your course materials (a folder of PDFs or slides, files in a claude.ai Project, or pasted notes) and it grounds the session in them:
+
+- **Index first:** on first use it lists the files, maps topics to pages or slides, and flags unreadable files. The index is saved in your course folder (`course-index.md`) or kept in the conversation, never inside the skill.
+- **The course is the authority:** it teaches in the course's notation and definitions and flags any conflict with general knowledge instead of silently picking one.
+- **Fixed citations:** course claims are cited as `[Lecture 4, slide 12]` or `[Notes.pdf p. 37, §2.3]`; anything else is labeled `(general knowledge)`.
+- **No invented citations:** if the materials don't cover a topic, it says so rather than guessing a page.
+- **Modes still apply:** a released solution in your materials stays withheld during guided mastery, and learner-as-teacher mode never cites or corrects from the sources.
+
+Where the agent can run commands (for example Claude Code), `scripts/extract_pages.py` extracts PDF text page by page so citations point to real pages:
+
+```bash
+python3 advanced-academic-tutor/scripts/extract_pages.py Notes.pdf --out ~/course/extracted
+```
+
+Where it cannot (claude.ai Projects, pasted text), the tutor cites visible section or slide titles instead of computed page numbers.
+
 ## Design principles
 
 - Select exactly one interaction mode per session segment.
@@ -85,7 +106,7 @@ Progress remains in the conversation by default. The skill does not write learne
 
 ## Evaluation
 
-`evals/evals.json` contains 11 behavioral test cases. Each has a prompt (multi-turn cases include the earlier context in brackets), the expected behavior, and checkable expectations. They cover:
+`evals/evals.json` contains 15 behavioral test cases. Each has a prompt (multi-turn cases include the earlier context in brackets), the expected behavior, and checkable expectations. They cover:
 
 - one-off questions that should not start tutoring;
 - the one-question-per-turn rule in guided mastery;
@@ -93,13 +114,15 @@ Progress remains in the conversation by default. The skill does not write learne
 - solution study: requiring an attempt, and accepting a different valid route;
 - the scope of `just tell me`, `exam mode`, and `save state`;
 - refusing to promote a level on a single check;
-- the faded worked-example path for beginners.
+- the faded worked-example path for beginners;
+- course-material grounding: correct citations, no invented page numbers, flagged notation conflicts, and withheld released solutions.
 
 Run them with the `skill-creator` skill's eval workflow, comparing runs with and without the skill installed.
 
 ## What's new in 1.1.0
 
-- **Behavioral evals:** 11 test cases, described above.
+- **Behavioral evals:** 15 test cases, described above.
+- **Course materials and citations:** a Course Sources module that indexes your materials, cites them in a fixed format, flags conflicts, and never invents a citation, plus an optional page-extraction script.
 - **Beginner path:** learners at level 0–1 get a worked example, then a problem with one step missing, then an independent problem, before regular Socratic questioning.
 - **Learner-state adaptation:** guidance for frustration, time pressure (`exam mode`), and fatigue that changes the pace but not the evidence rules.
 - **Less duplication:** one shared table defines what domain modules may do in each mode, replacing a repeated paragraph in each domain file.
